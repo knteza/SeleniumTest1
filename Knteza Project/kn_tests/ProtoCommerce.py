@@ -14,7 +14,7 @@ driver.implicitly_wait(3)
 driver.find_element(By.XPATH, "//div/input[@name='name']").send_keys("Simba")
 driver.find_element(By.CSS_SELECTOR, "input[name*='email']").send_keys("demoxgmail.com")
 driver.find_element(By.CSS_SELECTOR, "input[name*='email']").clear()
-driver.find_element(By.CSS_SELECTOR, "input[name*='email']").send_keys("rahulshetty")
+driver.find_element(By.CSS_SELECTOR, "input[name*='email']").send_keys("secretpassword")
 driver.find_element(By.XPATH, "//div/input[@type='checkbox']").click()
 dropdown = Select(driver.find_element(By.XPATH, "//select[@class='form-control']"))             #Select is a class that allows you to select from a dropdown menu
 dropdown.select_by_index(1)
