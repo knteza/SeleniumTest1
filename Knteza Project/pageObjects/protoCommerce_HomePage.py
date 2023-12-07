@@ -1,38 +1,35 @@
 import time
-
-import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
+# consider the webdriver as an engine of a train
 
 
-@pytest.mark.usefixtures("setup")
-class TestHomePage():
-    def test_homepageinfo(self):
+class SubmitFormHomePage():                    # will have details that the driver needs to understand to link it to other pages
+    def __init__(self, driver):                # define a constructor here so driver can recognize that this class (HomePage) is one of the compartments of the train to be able to link it to other pages
+        self.driver = driver
 
+    def enterName(self):
         self.driver.find_element(By.XPATH, "//div/input[@name='name']").send_keys("Simba")
+
+    def enterEmail(self):
         self.driver.find_element(By.CSS_SELECTOR, "input[name*='email']").send_keys("demoxgmail.com")
+
+    def enterPassword(self):
         self.driver.find_element(By.CSS_SELECTOR, "input[name*='email']").clear()
         self.driver.find_element(By.CSS_SELECTOR, "input[name*='email']").send_keys("secretpassword")
-        # Check box, select gender from dropdown menu
+
+    def selectCheckbox(self):
         self.driver.find_element(By.XPATH, "//div/input[@type='checkbox']").click()
-        dropdown = Select(self.driver.find_element(By.XPATH, "//select[@class='form-control']"))             #Select is a class that allows you to select from a dropdown menu
+        dropdown = Select(self.driver.find_element(By.XPATH, "//select[@class='form-control']"))             #Select is a class that allows you to select from a dropdown menu (male / female)
         dropdown.select_by_index(1)
-        # Select employment status, enter date of birth and click submit
+
+    def selectEmploymentStatus(self):
         self.driver.find_element(By.ID, "inlineRadio1").click()
+
+    def enterDOB(self):
         self.driver.find_element(By.CSS_SELECTOR, "input[type='date']").send_keys("05/13/2001")
+
+    def submitForm(self):
         self.driver.find_element(By.CSS_SELECTOR, "input[type='submit']").click()
         time.sleep(3)
-
-
-# self.driver: self keyword is always passed as an argument to a class function and is linked to the driver we requested in "setup" fixture
-
-
-
-
-
-
-
 
