@@ -1,10 +1,9 @@
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
-# consider the webdriver as an engine of a train
 
 
-class SubmitFormHomePage():                    # will have details that the driver needs to understand to link it to other pages
+class SubmitFormHomePg():                    # will have details that the driver needs to understand to link it to other pages
     def __init__(self, driver):                # define a constructor here so driver can recognize that this class (HomePage) is one of the compartments of the train to be able to link it to other pages
         self.driver = driver
 
